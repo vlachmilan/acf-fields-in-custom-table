@@ -14,7 +14,7 @@ class ACF_FICT_Field_Relationship extends ACF_FICT_Field
     if ( $acf_field['type'] == $this->name )
       return 'longtext';
 
-    return !$acf_field['multiple'] ? 'bigint(20) unsigned' : 'longtext';
+    return 'bigint(20) unsigned';
   }
 
   public function sanitize( $value, $acf_field )
@@ -23,9 +23,8 @@ class ACF_FICT_Field_Relationship extends ACF_FICT_Field
       return filter_var( $value, FILTER_SANITIZE_NUMBER_INT );
     }
 
-    return json_encode(array_map( function($item) {
-      return filter_var( $item, FILTER_SANITIZE_NUMBER_INT );
-    }, $value), JSON_NUMERIC_CHECK);
+    return filter_var( $value[0], FILTER_SANITIZE_NUMBER_INT );
+
   }
 
   public function escape( $value, $acf_field ) {

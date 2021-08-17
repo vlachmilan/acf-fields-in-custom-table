@@ -8,9 +8,18 @@
 	"authors"    : [{
 		"name"    : "Eduardo Marcolino",
 		"homepage": "http://eduardomarcolino.com"
+	},{
+		"name"    : "Milan Vlach",
+		"homepage": "http://milan.vlach.io"
 	}],
 	"require": {
 		"composer/installers": "~1.0",
 		"php": ">=7.0"
-	}
+	},
+    "scripts": {
+        "build": "composer archive --format=zip --file ./dist/destinio"
+    },
+    "archive": {
+        "exclude": ["destinio.zip", ".idea", ".github", ".github",".gitignore", "composer.json", "dist", "node_modules", ".docker"]
+    }
 }
